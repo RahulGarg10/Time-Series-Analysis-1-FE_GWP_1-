@@ -188,7 +188,9 @@ These methods are widely used in regression and time series diagnostics
 \[Hawkins, 1980\].
 
 1)Cook's distance. It is a way to measure how much influence a single
-data point has on a model's estimates. 2)ARCH-LM Test (Engle's Test).
+data point has on a model's estimates. 
+
+2)ARCH-LM Test (Engle's Test).
 This test checks whether there's any leftover autocorrelation in the
 squared residuals after fitting a model.
 
@@ -204,7 +206,6 @@ changes with and without them. This form of robustness check is commonly
 used in outlier detection frameworks \[Rousseeuw & Leroy, 2005; Hodge &
 Austin, 2004\]. Huge shifts in volatility forecasts after excluding a
 single data point show that the model is fragile to outliers.
-
 Compared with more robust methods. Less efficient but more robust
 methods can be used as a baseline for evaluation. If the model readings
 differ greatly at some points, this may be due to outliers
@@ -268,14 +269,15 @@ selection, thoughtful data preprocessing, and the use of estimation
 techniques that limit the impact of extreme values. Adopting these
 practices leads to more stable and reliable volatility forecasts.
 
-**4.Modeling non-stationarity and finding a unit Root Testing
-Definition:**
+## (D) Modeling non-stationarity and finding a unit Root Testing:
+
+### 1. Definition:
 
 A non-stationarity time series is a series which does not have constant
 mean and variance. A non-stationary time series has long term trends,
 seasonality and often has a unit root of the characteristic equation.
 
-**Description:**
+### 2. Description:
 
 In non-stationary time series, mean and variance are dependent on time,
 that is they change with time and one or more roots of the
@@ -285,7 +287,7 @@ past value is equal to one, then it becomes a random walk series.
 Because of these factors time series cannot converge and mean is not
 centered around a particular value.
 
-**Demonstration & Diagram:**
+### 3. Demonstration & Diagram:
 
 For demonstration, we used real world data of NVIDIA stock from 1st Jan
 2023 to 1st Jan 2025. The above figure shows the stock price and daily
@@ -300,10 +302,9 @@ prices adf test has p value greater than 0.05 making it non-stationary
 whereas p value is lower than 0.05 for daily return making it
 stationary.
 
-![](./image4.jpg){width="5.868055555555555in"
-height="3.138888888888889in"}
+![](images/image4.jpg)
 
-**Diagnosis:**
+### 4. Diagnosis:
 
 1)First can we check directly from the stock price graph to see if there
 is trend and/or seasonality present in the time series.
@@ -315,7 +316,7 @@ then it is non-stationary
 (adf) test which checks for unit root. If the p value is greater than
 0.05 then we accept the null hypothesis that unit root exists.
 
-**Damage:**
+### 5. Damage:
 
 1)Since the underlying statistics like mean and variance are not
 constant over time, you cannot fit a regression line, and the forecast
@@ -330,7 +331,7 @@ assumptions required.
 non-stationarity. All models like AR(), MA, Garch, ARIMA all require
 stationarity, ARIMA does differencing to make the series stationary.
 
-**Direction:**
+### 6. Direction:
 
 1)Try different transformation techniques like log transformation,
 squared or box-cox transformation which can make the series stationary.
@@ -350,7 +351,7 @@ constant then we can use the GARCH model.
 5)We can use RNN and Deep learning techniques to model non stationary
 time series.
 
-**Summary:**
+## (E) Summary:
 
 Ignoring skewness can lead to mispricing of derivatives, overestimation
 of large wins, and incorrect Value-at-Risk (VaR) measures. High kurtosis
@@ -374,7 +375,7 @@ machine learning techniques like RNNs. Combining these approaches
 ensures more accurate risk assessment, stable forecasts, and resilient
 financial modeling.
 
-# References  {#references .unnumbered}
+## (F) References:
 
 Bollerslev, T. (1986). Generalized Autoregressive Conditional
 Heteroskedasticity. Journal of Econometrics, 31(3),
