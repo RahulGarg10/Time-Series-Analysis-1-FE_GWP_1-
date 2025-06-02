@@ -87,9 +87,17 @@ skewness.
 ### 1. Definition: 
 
 Kurtosis measures the \"tailedness\" of the probability distribution.
-Excess kurtosis is defined as: Excess
+Excess kurtosis is defined as:
 
-Kurtosis=E\[(X−μ)4\]σ4−3Excess Kurtosis=σ4E\[(X−μ)4\]−3
+
+$$\\text{Excess Kurtosis} = \frac{E\left[(X - \mu)^4\right]}{\sigma^4} - 3\$$
+
+
+**Interpretation:**
+
+- **Excess Kurtosis = 0**: Normal distribution (mesokurtic)  
+- **Excess Kurtosis > 0**: Heavy tails (leptokurtic)  
+- **Excess Kurtosis < 0**: Light tails (platykurtic)
 
 Heteroscedasticity refers to the non-constant variance of a time series
 over time.
