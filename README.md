@@ -39,7 +39,7 @@ highlights how infrequent large gains distort return profiles.
 Recognizing positive skew helps traders and portfolio managers better
 assess risk-reward asymmetries and adjust strategies accordingly.
 
-# Diagnosis  {#diagnosis .unnumbered}
+### 4. Diagnosis:
 
 1)Skewness can be diagnosed by calculating the sample skewness
 coefficient. A value significantly different from zero indicates
@@ -50,7 +50,7 @@ or QQ plot.
 
 3)Using Normality test like Jarque-Bera can help to identify Skewness.
 
-**Damage:**
+### 5. Damage:
 
 1)Ignoring skewness can lead to mispricing of derivatives, as models
 like Black-Scholes assume symmetric returns.
@@ -63,7 +63,7 @@ infrequent but memorable spikes.
 3)Apart from this ignoring skewness can lead to overstating or
 understanding of VaR measures.
 
-# Directions  {#directions .unnumbered}
+### 6. Directions:
 
 1)Use models that account for skewness, such as the Skew Normal
 Distribution or Stochastic Volatility Models.
@@ -71,7 +71,9 @@ Distribution or Stochastic Volatility Models.
 2)Transform the data using methods like Box-Cox transformation to reduce
 skewness.
 
-# Kurtosis / Heteroscedasticity Definition 
+## (B) Kurtosis / Heteroscedasticity 
+
+### 1. Definition: 
 
 Kurtosis measures the \"tailedness\" of the probability distribution.
 Excess kurtosis is defined as: Excess
@@ -81,17 +83,18 @@ Kurtosis=E\[(X−μ)4\]σ4−3Excess Kurtosis=σ4E\[(X−μ)4\]−3
 Heteroscedasticity refers to the non-constant variance of a time series
 over time.
 
-# Description  {#description-1 .unnumbered}
+### 2. Description: 
 
 High kurtosis indicates fat tails, meaning extreme values are more
 likely. Heteroscedasticity is common in financial data, where volatility
-clusters over time. **Demonstration**
+clusters over time.
+
+### 3. Demonstration:
 
 For Demonstration purpose we have used S&P500 data downloaded from
 yfinance with kurtosis as 10.03.
 
-![](./image2.jpg){width="5.083333333333333in"
-height="3.6041666666666665in"}
+![](images/image2.jpg)
 
 For Normal Distribution Kurtosis is 3 but, in our case, high kurtosis of
 10.03 indicates fat tails and extreme events. This high kurtosis means
@@ -100,7 +103,7 @@ etc.).In the volatility plot we can see high volatility period and
 followed by calm periods. We can combine fat-tailed distributions with
 dynamic volatility adjustments for robust forecasting.
 
-# Diagnosis  {#diagnosis-1 .unnumbered}
+### 4. Diagnosis:
 
 1)Calculate the sample excess kurtosis. Values greater than 0 indicate
 fat tails.
@@ -108,20 +111,22 @@ fat tails.
 2)Heteroscedasticity: Use statistical tests like the ARCH-LM test or
 visualize volatility clustering.
 
-# Damage {#damage .unnumbered}
+### 5. Damage:
 
 Ignoring kurtosis and heteroscedasticity can lead to underestimating the
 risk of extreme events, resulting in poor risk management and derivative
 pricing.
 
-# Directions  {#directions-1 .unnumbered}
+### 6. Directions:
 
 1)Use GARCH models to model time-varying volatility.
 
 2)Incorporate Student's t-distribution or Generalized Error Distribution
 (GED) to account for fat tails.
 
-# 3.Addressing sensitivity to outliers Definition  {#addressing-sensitivity-to-outliers-definition .unnumbered}
+## (C) Addressing sensitivity to outliers:
+
+### 1. Definition:
 
 Sensitivity to outliers refers to the extent to which a model\'s
 predictions are influenced by extreme or atypical data points. A model
@@ -129,7 +134,7 @@ that is highly sensitive to outliers may exhibit significant changes in
 its output even when a single value lies far outside the typical range
 of the data.
 
-# Description  {#description-2 .unnumbered}
+### 2. Description:
 
 Volatility models, especially those based on squared returns (like
 GARCH), are highly sensitive to extreme values. Outliers can distort
@@ -138,7 +143,7 @@ that do not reflect the actual market risk. This phenomenon has been
 explored in detail in financial econometrics literature \[Bollerslev,
 1986; Tsay, 2010; Cont, 2001\].
 
-# Demonstration  {#demonstration .unnumbered}
+### 3. Demonstration:
 
 We compare how different volatility models respond to outliers: Standard
 GARCH(1,1) with Gaussian residuals, GARCH(1,1) with Student's
@@ -147,8 +152,7 @@ t-distribution, Rolling standard deviation.
 For these purposes, we use synthetic data into which we have manually
 introduced several outliers.
 
-![](./image3.jpg){width="4.722222222222222in"
-height="2.4791666666666665in"}
+![](images/image3.jpg)
 
 The rolling standard deviation shows sharp, box-shaped spikes that last
 exactly the length of the window, indicating high sensitivity to
@@ -165,11 +169,11 @@ t-based GARCH model offers a balanced response---it is sensitive enough
 to acknowledge large shocks but robust enough to prevent a single data
 point from distorting the entire volatility forecast.
 
-# Diagnosis {#diagnosis-2 .unnumbered}
+### 4. Diagnosis:
 
 There are several ways to address this challenge.
 
-***Visual inspection.***
+***4.1 Visual inspection.***
 
 The easiest way and the first one to try is to visualize the data for
 outliers. It is worth plotting both returns and volatility. If a single
@@ -177,7 +181,7 @@ extreme return causes a sharp and persistent spike in volatility,
 followed by a slow decay--- even though returns normalize
 afterward---this is classic outlier sensitivity.
 
-***Statistical tests.***
+***4.2 Statistical tests.***
 
 There are statistical approaches to assess sensitivity to outliers.
 These methods are widely used in regression and time series diagnostics
@@ -193,7 +197,7 @@ Test. If a model assumes normal errors (like basic GARCH does), but the
 residuals have fat tails or skewness, that's a sign that outliers are
 distorting the model fit.
 
-4)Other methods.
+***4.3 Other methods.***
 
 Another way to assess the impact of outliers is to check how the model
 changes with and without them. This form of robustness check is commonly
@@ -205,7 +209,7 @@ Compared with more robust methods. Less efficient but more robust
 methods can be used as a baseline for evaluation. If the model readings
 differ greatly at some points, this may be due to outliers
 
-# Damage  {#damage-1 .unnumbered}
+### 5. Damage:
 
 Volatility models that are highly sensitive to outliers can produce
 distorted outputs, leading to serious consequences in trading, pricing,
@@ -232,7 +236,7 @@ elevated risk estimates. This led to mis calibrated hedging, high
 transaction costs, and increased exposure, ultimately reducing trading
 effectiveness.
 
-# Directions  {#directions-2 .unnumbered}
+### 6. Directions:
 
 To reduce sensitivity to outliers in volatility modeling, several
 approaches can be adopted. Robust statistics, including preprocessing
