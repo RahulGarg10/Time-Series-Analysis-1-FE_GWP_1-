@@ -8,9 +8,22 @@ Skewness measures the asymmetry of the probability distribution of a
 real-valued random variable.
 
 Mathematically, skewness is defined as the third standardized moment:
-Skewness=E\[(X−μ)3\]σ3Skewness=*σ*3E\[(*X*−*μ*)3\] where μ*μ* is the
-mean, σ*σ* is the standard deviation, and EE is the expectation
-operator.
+
+$$\text{Skewness} = \frac{E\left[(X - \mu)^3\right]}{\sigma^3}$$
+
+**Where:**
+
+- $X$ : the random variable  
+- $\mu = E[X]$ : **mean**
+   
+- $\sigma = \sqrt{E[(X - \mu)^2]}$ : **standard deviation**  
+- $E[\cdot]$ : denotes **expectation operator**
+
+**Interpretation:**
+
+- **Skewness > 0**: Distribution has a **right (positive) tail**
+- **Skewness < 0**: Distribution has a **left (negative) tail**
+- **Skewness = 0**: Distribution is **symmetric** (e.g., normal distribution)
 
 ### 2. Description:
 
