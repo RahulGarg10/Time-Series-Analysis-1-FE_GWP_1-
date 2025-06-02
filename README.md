@@ -41,34 +41,32 @@ assess risk-reward asymmetries and adjust strategies accordingly.
 
 ### 4. Diagnosis:
 
-1)Skewness can be diagnosed by calculating the sample skewness
+- Skewness can be diagnosed by calculating the sample skewness
 coefficient. A value significantly different from zero indicates
 skewness.
 
-2)Other way can be to plot the Distribution using Histogram or Box plot
+- Other way can be to plot the Distribution using Histogram or Box plot
 or QQ plot.
 
-3)Using Normality test like Jarque-Bera can help to identify Skewness.
+- Using Normality test like Jarque-Bera can help to identify Skewness.
 
 ### 5. Damage:
 
-1)Ignoring skewness can lead to mispricing of derivatives, as models
-like Black-Scholes assume symmetric returns.
+- Ignoring skewness can lead to mispricing of derivatives, as models
+like Black-Scholes assume symmetric returns. This can result in incorrect hedging strategies and unexpected losses.
 
-This can result in incorrect hedging strategies and unexpected losses.
-
-2)Investors might overestimate the likelihood of large wins due to
+- Investors might overestimate the likelihood of large wins due to
 infrequent but memorable spikes.
 
-3)Apart from this ignoring skewness can lead to overstating or
+- Apart from this ignoring skewness can lead to overstating or
 understanding of VaR measures.
 
 ### 6. Directions:
 
-1)Use models that account for skewness, such as the Skew Normal
+- Use models that account for skewness, such as the Skew Normal
 Distribution or Stochastic Volatility Models.
 
-2)Transform the data using methods like Box-Cox transformation to reduce
+- Transform the data using methods like Box-Cox transformation to reduce
 skewness.
 
 ## (B) Kurtosis / Heteroscedasticity 
@@ -105,10 +103,10 @@ dynamic volatility adjustments for robust forecasting.
 
 ### 4. Diagnosis:
 
-1)Calculate the sample excess kurtosis. Values greater than 0 indicate
+- Calculate the sample excess kurtosis. Values greater than 0 indicate
 fat tails.
 
-2)Heteroscedasticity: Use statistical tests like the ARCH-LM test or
+- Heteroscedasticity: Use statistical tests like the ARCH-LM test or
 visualize volatility clustering.
 
 ### 5. Damage:
@@ -119,9 +117,9 @@ pricing.
 
 ### 6. Directions:
 
-1)Use GARCH models to model time-varying volatility.
+- Use GARCH models to model time-varying volatility.
 
-2)Incorporate Student's t-distribution or Generalized Error Distribution
+- Incorporate Student's t-distribution or Generalized Error Distribution
 (GED) to account for fat tails.
 
 ## (C) Addressing sensitivity to outliers:
@@ -148,7 +146,6 @@ explored in detail in financial econometrics literature \[Bollerslev,
 We compare how different volatility models respond to outliers: Standard
 GARCH(1,1) with Gaussian residuals, GARCH(1,1) with Student's
 t-distribution, Rolling standard deviation.
-
 For these purposes, we use synthetic data into which we have manually
 introduced several outliers.
 
@@ -187,14 +184,14 @@ There are statistical approaches to assess sensitivity to outliers.
 These methods are widely used in regression and time series diagnostics
 \[Hawkins, 1980\].
 
-1)Cook's distance. It is a way to measure how much influence a single
+- Cook's distance. It is a way to measure how much influence a single
 data point has on a model's estimates. 
 
-2)ARCH-LM Test (Engle's Test).
+- ARCH-LM Test (Engle's Test).
 This test checks whether there's any leftover autocorrelation in the
 squared residuals after fitting a model.
 
-3)Normality Tests on Residuals like Jarque-Bera Test or Shapiro-Wilk
+- Normality Tests on Residuals like Jarque-Bera Test or Shapiro-Wilk
 Test. If a model assumes normal errors (like basic GARCH does), but the
 residuals have fat tails or skewness, that's a sign that outliers are
 distorting the model fit.
@@ -212,26 +209,26 @@ differ greatly at some points, this may be due to outliers
 
 ### 5. Damage:
 
-Volatility models that are highly sensitive to outliers can produce
+- Volatility models that are highly sensitive to outliers can produce
 distorted outputs, leading to serious consequences in trading, pricing,
 and risk management.
 
-1)Derivative Mispricing: Overreacting to an outlier may inflate
+- Derivative Mispricing: Overreacting to an outlier may inflate
 volatility estimates, resulting in overpriced options and unnecessary
 hedging costs.
 
-2)Overstated Risk Metrics: A single extreme return can cause exaggerated
+- Overstated Risk Metrics: A single extreme return can cause exaggerated
 risk forecasts, inefficient capital allocation, and unwarranted
 de-risking.
 
-3)Hedging Inefficiencies: Inaccurate forecasts lead to over- or
+- Hedging Inefficiencies: Inaccurate forecasts lead to over- or
 under-hedging, increasing P&L volatility and weakening risk control.
 
-4)Model Instability: Models trained on outlier-contaminated data may
+- Model Instability: Models trained on outlier-contaminated data may
 learn incorrect patterns, causing forecast drift and unreliable
 decisions.
 
-A notable example occurred during the COVID-19 \[Aggarwal, 2017\] crash
+- A notable example occurred during the COVID-19 \[Aggarwal, 2017\] crash
 in March 2020, when volatility models reacted to extreme returns with
 elevated risk estimates. This led to mis calibrated hedging, high
 transaction costs, and increased exposure, ultimately reducing trading
@@ -239,32 +236,34 @@ effectiveness.
 
 ### 6. Directions:
 
-To reduce sensitivity to outliers in volatility modeling, several
+- To reduce sensitivity to outliers in volatility modeling, several
 approaches can be adopted. Robust statistics, including preprocessing
 and distributional assumptions, have been shown to significantly improve
 model stability \[Iglewicz & Hoaglin, 1993; Rousseeuw & Leroy, 2005\].
 Below are some effective methods:
 
-1)Data preprocessing. Applying winsorization, trimming, or outlier
+- Data preprocessing. Applying winsorization, trimming, or outlier
 detection algorithms (e.g., Grubbs' test or Zscore filtering) to clean
 the return series before model fitting can prevent outliers from biasing
-the estimation. 2)Use Realized Volatility. When high-frequency data is
+the estimation.
+- Use Realized Volatility. When high-frequency data is
 available, realized volatility computed from intraday returns can
 provide a more accurate and stable estimate that is less influenced by a
-single outlier at the daily level. 3)Use Heavy-Tailed Distributions.
+single outlier at the daily level.
+- Use Heavy-Tailed Distributions.
 Replace the normal distribution with alternatives like the Student's t
 or generalized error distribution to better handle extreme returns.
 
-4)Consider Asymmetric or Non-Linear Models. Models like EGARCH or
+- Consider Asymmetric or Non-Linear Models. Models like EGARCH or
 GJR-GARCH, and machine learning methods (e.g., random forests, RNNs) can
 be more resilient to outliers.
 
-5)Apply Robust Estimation Methods. Robust estimation methods, such as
+- Apply Robust Estimation Methods. Robust estimation methods, such as
 those based on Huber loss, Tukey's biweight function, or quantile-based
 estimation, reduce the impact of extreme values during model fitting by
 downweighing observations that deviate significantly from the median.
 
-In summary, improving resilience to outliers requires careful model
+- In summary, improving resilience to outliers requires careful model
 selection, thoughtful data preprocessing, and the use of estimation
 techniques that limit the impact of extreme values. Adopting these
 practices leads to more stable and reliable volatility forecasts.
@@ -306,49 +305,51 @@ stationary.
 
 ### 4. Diagnosis:
 
-1)First can we check directly from the stock price graph to see if there
+- First can we check directly from the stock price graph to see if there
 is trend and/or seasonality present in the time series.
 
-2)Plot the ACF and PACF for the time series. If the ACF decays slowly
+- Plot the ACF and PACF for the time series. If the ACF decays slowly
 then it is non-stationary
 
-3)There are few formal tests available like Augmented Dickey-Fuller
+- There are few formal tests available like Augmented Dickey-Fuller
 (adf) test which checks for unit root. If the p value is greater than
 0.05 then we accept the null hypothesis that unit root exists.
 
 ### 5. Damage:
 
-1)Since the underlying statistics like mean and variance are not
+- Since the underlying statistics like mean and variance are not
 constant over time, you cannot fit a regression line, and the forecast
 will have unreliable results as previous data can be significantly
 different from present or future data.
 
-2)Like regression, one cannot do statistical inferences like hypothesis
+- Like regression, one cannot do statistical inferences like hypothesis
 testing reliably because no constant mean and variance violates the
 assumptions required.
 
-3)Another problem is there is no easy or simpler model present to model
+- Another problem is there is no easy or simpler model present to model
 non-stationarity. All models like AR(), MA, Garch, ARIMA all require
 stationarity, ARIMA does differencing to make the series stationary.
 
 ### 6. Direction:
 
-1)Try different transformation techniques like log transformation,
+- Try different transformation techniques like log transformation,
 squared or box-cox transformation which can make the series stationary.
 
-2)Tty differencing (1st order, 2nd order) which can remove
-non-stationary from trends and seasonality. 3)Use models like ARIMA,
+- Tty differencing (1st order, 2nd order) which can remove
+non-stationary from trends and seasonality.
+
+- Use models like ARIMA,
 which takes care of non-stationarity by including differencing
 component. There are state space models which are dynamic and take care
 of all types non-stationary but are complex to implement. In the python
 file we used ARIMA(1,1,1) model with 1st order differencing because it
 has lowest aic.
 
-4)If one can make the mean constant or converge to near to one value
+- If one can make the mean constant or converge to near to one value
 after transformation even if the series variance does not become
 constant then we can use the GARCH model.
 
-5)We can use RNN and Deep learning techniques to model non stationary
+- We can use RNN and Deep learning techniques to model non stationary
 time series.
 
 ## (E) Summary:
@@ -377,27 +378,25 @@ financial modeling.
 
 ## (F) References:
 
-Bollerslev, T. (1986). Generalized Autoregressive Conditional
+1. Bollerslev, T. (1986). Generalized Autoregressive Conditional
 Heteroskedasticity. Journal of Econometrics, 31(3),
-
 307--327. https://doi.org/10.1016/0304-4076(86)90063-1
 
-Tsay, R. S. (2010). Analysis of Financial Time Series (3rd ed.). Wiley.
+1. Tsay, R. S. (2010). Analysis of Financial Time Series (3rd ed.). Wiley.
 
-Cont, R. (2001). Empirical properties of asset returns: stylized facts
+1. Cont, R. (2001). Empirical properties of asset returns: stylized facts
 and statistical issues. Quantitative Finance, 1(2),
-
 223--236. https://doi.org/10.1080/713665670
 
-Rousseeuw, P. J., & Leroy, A. M. (2005). Robust Regression and Outlier
+1. Rousseeuw, P. J., & Leroy, A. M. (2005). Robust Regression and Outlier
 Detection. Wiley-Interscience.
 
-Iglewicz, B., & Hoaglin, D. C. (1993). How to Detect and Handle
+1. Iglewicz, B., & Hoaglin, D. C. (1993). How to Detect and Handle
 Outliers. ASQC Quality Press.
 
-Hodge, V. J., & Austin, J. (2004). A Survey of Outlier Detection
+1. Hodge, V. J., & Austin, J. (2004). A Survey of Outlier Detection
 Methodologies. Artificial Intelligence Review, 22(2), 85--126.
 https://doi.org/10.1023/B:AIRE.0000045502.10941.a9 Hawkins, D. M.
 (1980). Identification of Outliers. Springer.
 
-Aggarwal, C. C. (2017). Outlier Analysis (2nd ed.). Springer.
+1. Aggarwal, C. C. (2017). Outlier Analysis (2nd ed.). Springer.
